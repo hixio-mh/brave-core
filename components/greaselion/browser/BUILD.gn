@@ -11,6 +11,10 @@ source_set("browser") {
     "switches.h",
   ]
 
+  configs += [
+    "//brave/components/brave_component_updater/browser:network_config"
+  ]
+
   deps = [
     "//base",
     "//brave/components/brave_component_updater/browser",

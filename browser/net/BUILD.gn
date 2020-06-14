@@ -7,7 +7,10 @@ import("//build/config/features.gni")
 defines = brave_service_key_defines
 
 source_set("net") {
-  configs += [ "//brave/build/geolocation" ]
+  configs += [
+    "//brave/build/geolocation",
+    "//brave/components/brave_component_updater/browser:network_config",
+  ]
   sources = [
     "brave_ad_block_tp_network_delegate_helper.cc",
     "brave_ad_block_tp_network_delegate_helper.h",
