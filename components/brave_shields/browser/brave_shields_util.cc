@@ -332,11 +332,18 @@ void SetFingerprintingControlType(Profile* profile,
   if (!primary_pattern.IsValid())
     return;
 
+  ContentSetting content_setting = GetDefaultAllowFromControlType(type);
   auto* map = HostContentSettingsMapFactory::GetForProfile(profile);
   map->SetContentSettingCustomScope(
       primary_pattern, ContentSettingsPattern::Wildcard(),
       ContentSettingsType::PLUGINS, kFingerprintingV2,
-      GetDefaultAllowFromControlType(type));
+      // CONTENT_SETTING_DEFAULT means deleting the current content setting.
+      // With DEFAULT, it always use global FP setting.
+      // But we want DEFAULT as a standard FP blocking instead of fallback to
+      // global settings.
+      // As a workaround, picked CONTENT_SETTING_ASK to store it persistently.
+      content_setting == CONTENT_SETTING_DEFAULT ? CONTENT_SETTING_ASK
+                                                 : content_setting);
 
   RecordShieldsSettingChanged();
 }
@@ -349,8 +356,9 @@ ControlType GetFingerprintingControlType(Profile* profile, const GURL& url) {
     return ControlType::BLOCK;
   } else if (setting == CONTENT_SETTING_ALLOW) {
     return ControlType::ALLOW;
+  } else {
+    return ControlType::DEFAULT;
   }
-  return ControlType::DEFAULT;
 }
 
 void SetHTTPSEverywhereEnabled(Profile* profile,
