@@ -23,6 +23,8 @@
 #include "bat/ads/internal/bundle.h"
 #include "bat/ads/internal/classification/page_classifier/page_classifier.h"
 #include "bat/ads/internal/client.h"
+#include "bat/ads/internal/database/database.h"
+#include "bat/ads/internal/database/tables/creative_ad_notifications_database_table.h"
 #include "bat/ads/internal/ad_conversions.h"
 #include "bat/ads/internal/ad_notification_result_type.h"
 #include "bat/ads/internal/ad_notifications.h"
@@ -65,6 +67,8 @@ class AdsImpl : public Ads {
   void InitializeStep4(
       const Result result);
   void InitializeStep5(
+      const Result result);
+  void InitializeStep6(
       const Result result);
   bool IsInitialized();
 
@@ -247,6 +251,7 @@ class AdsImpl : public Ads {
   std::unique_ptr<AdsServe> ads_serve_;
   std::unique_ptr<SubdivisionTargeting> subdivision_targeting_;
   std::unique_ptr<AdConversions> ad_conversions_;
+  std::unique_ptr<database::Database> database_;
   std::unique_ptr<classification::PageClassifier> page_classifier_;
   std::unique_ptr<classification::PurchaseIntentClassifier>
       purchase_intent_classifier_;

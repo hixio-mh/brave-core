@@ -32,8 +32,6 @@ struct ADS_EXPORT CreativeAdNotificationInfo : CreativeAdInfo {
 };
 
 using CreativeAdNotificationList = std::vector<CreativeAdNotificationInfo>;
-using CreativeAdNotificationMap =
-    std::map<std::string, CreativeAdNotificationList>;
 
 }  // namespace ads
 
