@@ -332,18 +332,22 @@ void SetFingerprintingControlType(Profile* profile,
   if (!primary_pattern.IsValid())
     return;
 
-  ContentSetting content_setting = GetDefaultAllowFromControlType(type);
-  auto* map = HostContentSettingsMapFactory::GetForProfile(profile);
-  map->SetContentSettingCustomScope(
-      primary_pattern, ContentSettingsPattern::Wildcard(),
-      ContentSettingsType::PLUGINS, kFingerprintingV2,
-      // CONTENT_SETTING_DEFAULT means deleting the current content setting.
-      // With DEFAULT, it always use global FP setting.
-      // But we want DEFAULT as a standard FP blocking instead of fallback to
-      // global settings.
-      // As a workaround, picked CONTENT_SETTING_ASK to store it persistently.
-      content_setting == CONTENT_SETTING_DEFAULT ? CONTENT_SETTING_ASK
-                                                 : content_setting);
+  HostContentSettingsMapFactory::GetForProfile(profile)->
+      SetContentSettingCustomScope(
+          primary_pattern,
+          ContentSettingsPattern::FromString("https://balanced/*"),
+          ContentSettingsType::PLUGINS, kFingerprintingV2,
+          type == ControlType::DEFAULT ? CONTENT_SETTING_BLOCK
+                                       : CONTENT_SETTING_ALLOW);
+
+  HostContentSettingsMapFactory::GetForProfile(profile)->
+      SetContentSettingCustomScope(
+          primary_pattern,
+          ContentSettingsPattern::Wildcard(),
+          ContentSettingsType::PLUGINS,
+          kFingerprintingV2,
+          type == ControlType::DEFAULT ? CONTENT_SETTING_ALLOW
+                                       : GetDefaultBlockFromControlType(type));
 
   RecordShieldsSettingChanged();
 }
@@ -351,14 +355,20 @@ void SetFingerprintingControlType(Profile* profile,
 ControlType GetFingerprintingControlType(Profile* profile, const GURL& url) {
   auto* map = HostContentSettingsMapFactory::GetForProfile(profile);
   ContentSetting setting = map->GetContentSetting(
-        url, GURL(), ContentSettingsType::PLUGINS, kFingerprintingV2);
-  if (setting == CONTENT_SETTING_BLOCK) {
-    return ControlType::BLOCK;
-  } else if (setting == CONTENT_SETTING_ALLOW) {
-    return ControlType::ALLOW;
-  } else {
+      url, GURL(), ContentSettingsType::PLUGINS, kFingerprintingV2);
+  ContentSetting balanced_setting =
+      map->GetContentSetting(url, GURL("https://balanced/*"),
+                             ContentSettingsType::PLUGINS, kFingerprintingV2);
+
+  // Initial state.
+  if (balanced_setting == CONTENT_SETTING_DEFAULT)
     return ControlType::DEFAULT;
-  }
+
+  if (balanced_setting == CONTENT_SETTING_BLOCK)
+    return ControlType::DEFAULT;
+
+  return setting == CONTENT_SETTING_ALLOW ? ControlType::ALLOW
+                                          : ControlType::BLOCK;
 }
 
 void SetHTTPSEverywhereEnabled(Profile* profile,
