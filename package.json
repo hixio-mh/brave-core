@@ -339,7 +339,7 @@
     "@types/webtorrent": "^0.98.5",
     "array-move": "^2.2.1",
     "bignumber.js": "^7.2.1",
-    "bluebird": "^3.5.1",
+    "bluebird": "^3.7.2",
     "clipboard-copy": "^2.0.0",
     "jszip": "^3.2.2",
     "parse-domain": "^2.3.4",
