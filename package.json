@@ -350,7 +350,7 @@
     "redux-thunk": "^2.3.0",
     "throttleit": "^1.0.0",
     "unique-selector": "^0.4.1",
-    "webext-redux": "^2.1.4",
+    "webext-redux": "^2.1.7",
     "webtorrent": "^0.107.16"
   }
 }
