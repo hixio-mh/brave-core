@@ -1,0 +1,70 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.22.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-567746:
+    - '@storybook/react > lodash':
+        patched: '2021-10-20T00:42:41.026Z'
+    - '@storybook/addon-knobs > @storybook/client-api > lodash':
+        patched: '2021-10-20T00:42:41.026Z'
+    - '@storybook/addon-knobs > react-color > lodash':
+        patched: '2021-10-20T00:42:41.026Z'
+    - '@storybook/react > babel-plugin-react-docgen > lodash':
+        patched: '2021-10-20T00:42:41.026Z'
+    - '@types/redux-logger > redux > lodash':
+        patched: '2021-10-20T00:42:41.026Z'
+    - enzyme > cheerio > lodash:
+        patched: '2021-10-20T00:42:41.026Z'
+    - sinon > @sinonjs/samsam > lodash:
+        patched: '2021-10-20T00:42:41.026Z'
+    - '@storybook/react > @storybook/core > @storybook/ui > lodash':
+        patched: '2021-10-20T00:42:41.026Z'
+    - '@storybook/addon-knobs > react-color > reactcss > lodash':
+        patched: '2021-10-20T00:42:41.026Z'
+    - '@storybook/react > @storybook/core > html-webpack-plugin > lodash':
+        patched: '2021-10-20T00:42:41.026Z'
+    - '@storybook/react > @storybook/core > inquirer > lodash':
+        patched: '2021-10-20T00:42:41.026Z'
+    - '@storybook/react > react-dev-utils > inquirer > lodash':
+        patched: '2021-10-20T00:42:41.026Z'
+    - '@storybook/react > babel-preset-react-app > @babel/core > lodash':
+        patched: '2021-10-20T00:42:41.026Z'
+    - '@storybook/react > @storybook/core > @babel/preset-env > @babel/plugin-transform-block-scoping > lodash':
+        patched: '2021-10-20T00:42:41.026Z'
+    - jest > @jest/core > jest-snapshot > @babel/types > lodash:
+        patched: '2021-10-20T00:42:41.026Z'
+    - jest > @jest/core > @jest/transform > @babel/core > lodash:
+        patched: '2021-10-20T00:42:41.026Z'
+    - '@storybook/addon-centered > @storybook/addons > @storybook/api > telejson > lodash':
+        patched: '2021-10-20T00:42:41.026Z'
+    - '@storybook/react > babel-preset-react-app > @babel/plugin-transform-classes > @babel/helper-define-map > lodash':
+        patched: '2021-10-20T00:42:41.026Z'
+    - '@storybook/react > @storybook/core > @storybook/ui > react-resize-detector > lodash':
+        patched: '2021-10-20T00:42:41.026Z'
+    - '@storybook/react > babel-plugin-react-docgen > react-docgen > async > lodash':
+        patched: '2021-10-20T00:42:41.026Z'
+    - jest > @jest/core > @jest/transform > @babel/core > @babel/traverse > lodash:
+        patched: '2021-10-20T00:42:41.026Z'
+    - jest > @jest/core > jest-config > jest-jasmine2 > @babel/traverse > lodash:
+        patched: '2021-10-20T00:42:41.026Z'
+    - '@storybook/react > @storybook/core > @babel/preset-env > @babel/plugin-transform-modules-amd > @babel/helper-module-transforms > lodash':
+        patched: '2021-10-20T00:42:41.026Z'
+    - jest > @jest/core > @jest/reporters > istanbul-lib-instrument > @babel/core > lodash:
+        patched: '2021-10-20T00:42:41.026Z'
+    - '@storybook/addon-knobs > @storybook/theming > @emotion/styled > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+        patched: '2021-10-20T00:42:41.026Z'
+    - jest > @jest/core > jest-config > jest-jasmine2 > @babel/traverse > @babel/generator > lodash:
+        patched: '2021-10-20T00:42:41.026Z'
+    - '@storybook/react > @storybook/core > @babel/preset-env > @babel/plugin-proposal-async-generator-functions > @babel/helper-remap-async-to-generator > @babel/traverse > lodash':
+        patched: '2021-10-20T00:42:41.026Z'
+    - jest > @jest/core > @jest/reporters > istanbul-lib-instrument > @babel/core > @babel/helper-module-transforms > lodash:
+        patched: '2021-10-20T00:42:41.026Z'
+    - '@storybook/addons > @storybook/api > @storybook/theming > @emotion/styled > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+        patched: '2021-10-20T00:42:41.026Z'
+    - '@storybook/react > @storybook/core > @babel/preset-env > @babel/plugin-proposal-async-generator-functions > @babel/helper-remap-async-to-generator > @babel/traverse > @babel/generator > lodash':
+        patched: '2021-10-20T00:42:41.026Z'
+    - '@storybook/addon-centered > @storybook/addons > @storybook/api > @storybook/theming > @emotion/styled > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+        patched: '2021-10-20T00:42:41.026Z'
+    - jest > @jest/core > jest-config > jest-environment-jsdom > jsdom > request-promise-native > request-promise-core > lodash:
+        patched: '2021-10-20T00:42:41.026Z'

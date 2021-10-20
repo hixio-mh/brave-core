@@ -15,7 +15,9 @@
     "storybook": "start-storybook",
     "test-unit": "jest -t",
     "test-security": "python script/audit_deps.py",
-    "test-python-scripts": "npm run pep8 && PYTHONPATH=./script python -m unittest discover -s ./script/test"
+    "test-python-scripts": "npm run pep8 && PYTHONPATH=./script python -m unittest discover -s ./script/test",
+    "prepublish": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -351,6 +353,8 @@
     "throttleit": "^1.0.0",
     "unique-selector": "^0.4.1",
     "webext-redux": "^2.1.4",
-    "webtorrent": "^0.107.16"
-  }
+    "webtorrent": "^0.107.16",
+    "@snyk/protect": "latest"
+  },
+  "snyk": true
 }
