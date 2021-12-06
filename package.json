@@ -299,7 +299,7 @@
     "babel-loader": "^8.1.0",
     "brave-ui": "github:brave/brave-ui#303a9d6424950a31836902f9bf2c03a0c174efda",
     "css-loader": "^2.1.1",
-    "csstype": "^2.5.5",
+    "csstype": "^2.6.18",
     "deep-freeze-node": "^1.1.3",
     "emptykit.css": "^1.0.1",
     "enzyme": "^3.3.0",
